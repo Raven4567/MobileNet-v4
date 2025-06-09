@@ -67,7 +67,7 @@ class MobileMQA(nn.Module):
         attention_scores = t.matmul(query, key.transpose(-2, -1))
 
         # Scale attention scores
-        attention_scores = attention_scores / t.sqrt(D_head)
+        attention_scores = attention_scores / (D_head ** 0.5)
 
         # Применяем softmax для нормализации весов
         attention_scores = t.softmax(attention_scores, dim=-1)

@@ -1,6 +1,5 @@
-from .mobilenet_v4_custom import mobilenet_v4_custom  # noqa: F401
-from .mobilenet_v4_nano import mobilenet_v4_nano  # noqa: F401
-from .mobilenet_v4_small import mobilenet_v4_small  # noqa: F401
-from .mobilenet_v4_medium import mobilenet_v4_medium  # noqa: F401
-from .mobilenet_v4_large import mobilenet_v4_large  # noqa: F401
-from .mobilenet_v4_hybrid_large import mobilenet_v4_hybrid_large  # noqa: F401
+from .MNv4_Conv_S import MNv4_Conv_S  # noqa: F401
+from .MNv4_Conv_M import MNv4_Conv_M  # noqa: F401
+from .MNv4_Hybrid_M import MNv4_Hybrid_M # noqa: F401
+from .MNv4_Conv_L import MNv4_Conv_L  # noqa: F401
+from .MNv4_Hybrid_L import MNv4_Hybrid_L  # noqa: F401
