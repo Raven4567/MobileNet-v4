@@ -3,9 +3,9 @@ from torch import nn
 
 ### Module blocks
 
-from .modules import ExtraDW_block, FusedIB_block, \
-                    MobileMQA_block, SE_block, \
-                    Stem_block, UIB_block
+from modules import ExtraDW, FusedIB, \
+                    MobileMQA, SE, \
+                    Stem, UIB
 
 # Small модель – подходит для MNIST, KMNIST, FashionMNIST, простых Atari-сред
 class mobilenet_v4_small(nn.Module):
@@ -13,24 +13,24 @@ class mobilenet_v4_small(nn.Module):
         super().__init__()
 
         self.features = nn.Sequential(
-            nn.Sequential(Stem_block(in_channels, base_channels=48)),
+            nn.Sequential(Stem(in_channels, base_channels=112)),
 
-            *[nn.Sequential(FusedIB_block(base_channels=48, expanded_channels=96)) for _ in range(2)],
+            *[nn.Sequential(FusedIB(base_channels=112, expanded_channels=224)) for _ in range(3)],
 
-            *[nn.Sequential(UIB_block(base_channels=48, expanded_channels=96), ExtraDW_block(base_channels=48, expanded_channels=96)) for _ in range(3)],
+            *[nn.Sequential(UIB(base_channels=112, expanded_channels=224), ExtraDW(base_channels=112, expanded_channels=224)) for _ in range(11)],
             
-            *[nn.Sequential(SE_block(base_channels=48, squeezed_channels=12), UIB_block(base_channels=48, expanded_channels=96)) for _ in range(4)],
+            *[nn.Sequential(SE(base_channels=112, squeeze_ratio=0.25), UIB(base_channels=112, expanded_channels=224)) for _ in range(7)],
              
-            *[nn.Sequential(SE_block(base_channels=48, squeezed_channels=12), MobileMQA_block(base_channels=48, num_heads=6, downsample=False)) for _ in range(2)]
+            *[nn.Sequential(SE(base_channels=112, squeeze_ratio=0.25), MobileMQA(base_channels=112, num_heads=8)) for _ in range(3)]
         )
 
         self.classificator = nn.Sequential(
-            nn.AdaptiveAvgPool2d(1),
+            nn.AdaptiveAvgPool2d((1, 1)),
         
             nn.Flatten(),
         
-            nn.Linear(48, 1024),
-            nn.BatchNorm1d(1024),
+            nn.Linear(112, 1024),
+            nn.GroupNorm(1024 // 8, 1024),
             nn.SiLU(inplace=True),
 
             nn.Dropout(0.2),
