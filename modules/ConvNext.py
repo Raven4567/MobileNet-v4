@@ -36,4 +36,4 @@ class ConvNext(nn.Module):
         )
 
     def forward(self, x: t.Tensor):
-        return self.convnext(x) + x
+        return self.convnext(x) + self.shortcut(x)
