@@ -6,13 +6,9 @@ Dies ist mein Repository zur Implementierung der MobileNet-v4-Architektur, basie
 # Schnellstart
 
 ## Installation
-Ausführen:
+Sie müssen torch==2.7.0+cu118 installieren und dann Folgendes ausführen:
 ```
-pip install torch==2.7.0+cu118
-```
-oder
-```
-pip install -r requirements.txt
+git clone https://github.com/Raven4567/MobileNet-v4
 ```
 
 ### MobileNet-v4 small

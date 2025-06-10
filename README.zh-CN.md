@@ -5,13 +5,9 @@
 
 # 快速开始
 ## 安装
-运行:
+您需要安装 torch==2.7.0+cu118 然后运行:
 ```
-pip install torch==2.7.0+cu118
-```
-或者
-```
-pip install -r requirements.txt
+git clone https://github.com/Raven4567/MobileNet-v4
 ```
 
 ### MobileNet-v4 small

@@ -7,13 +7,9 @@
 # Быстрый старт
 
 ## Установка
-Выполните:
+Установите torch==2.7.0+cu118 и затем запустите:
 ```
-pip install torch==2.7.0+cu118
-```
-или
-```
-pip install -r requirements.txt
+git clone https://github.com/Raven4567/MobileNet-v4
 ```
 
 ### MobileNet-v4 small

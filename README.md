@@ -7,15 +7,11 @@ This is my repository for implementing MobileNet-v4 architecture based on the or
 # Quick start
 
 ## Installation
-run:
+You've gotta install torch==2.7.0+cu118 and then run:
 ```
-pip install torch==2.7.0+cu118
+git clone https://github.com/Raven4567/MobileNet-v4
 ```
-or
-```
-pip install -r requirements.txt
-```
----
+
 ### MobileNet-v4 small
 ```python
 import torch as t
