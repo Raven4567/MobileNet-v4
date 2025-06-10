@@ -3,6 +3,11 @@ from torch import nn
 
 ### Module blocks
 
+import sys
+import os
+
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+
 from modules import Stem, FusedIB, ExtraDW, ConvNext
 
 # The model for 384x384 ImageNet-1k classification
