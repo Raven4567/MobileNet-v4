@@ -14,7 +14,7 @@ device = t.device('cuda' if t.cuda.is_available() else 'cpu')
 
 class TestMobileNet_v4_Hybrid_M(unittest.TestCase):
     def setUp(self):
-        self.model = models.MNv4_Conv_M().to(device)
+        self.model = models.MNv4_Hybrid_M().to(device)
 
     def test_forward(self):
         pred = self.model(
