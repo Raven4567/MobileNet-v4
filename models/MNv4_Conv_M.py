@@ -60,7 +60,7 @@ class MNv4_Conv_M(nn.Module):
                 nn.GroupNorm(1280 // 8, 1280),
                 nn.SiLU(inplace=True),
 
-                nn.Dropout(0.2),
+                # nn.Dropout(0.2),
 
                 nn.Conv2d(1280, 1000, kernel_size=(1, 1)),
                 nn.Flatten()
