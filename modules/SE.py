@@ -11,7 +11,7 @@ class SE(nn.Module):
         self.SE = nn.Sequential(
             nn.AdaptiveAvgPool2d((1, 1)),
 
-            nn.Conv2d(in_channels, squeezed_channels, kernel_size=(1, 1)),
+            nn.Conv2d(in_channels, squeezed_channels, kernel_size=(1, 1), bias=False),
             nn.GroupNorm(squeezed_channels // 8, squeezed_channels),
             nn.SiLU(inplace=True),
 
