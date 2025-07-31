@@ -94,7 +94,7 @@ MobileNet_v4/
 │   ├── FusedIB.py
 │   ├── IB.py
 │   ├── MobileMQA.py
-│   └── Stem.y
+│   └── Stem.py
 ├── unittests/
 │   ├── test_ConvNext.py
 │   ├── test_ExtraDW.py
