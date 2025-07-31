@@ -9,7 +9,7 @@ class ResNeXt(nn.Module):
         if in_channels != out_channels:
             self.shortcut = nn.Conv2d(in_channels, out_channels, kernel_size=(1, 1))
         else:
-            self.shortuct = nn.Identity()
+            self.shortcut = nn.Identity()
 
         self.module = nn.Sequential(
             nn.Sequential(

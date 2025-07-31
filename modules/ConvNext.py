@@ -17,7 +17,19 @@ class ConvNext(nn.Module):
         super().__init__()
 
         if in_channels != out_channels:
-            self.shortcut = nn.Conv2d(in_channels, out_channels, kernel_size=(1, 1))
+            self.shortcut = nn.Conv2d(
+                in_channels, 
+                out_channels, 
+                kernel_size=(1, 1)
+            )
+        elif stride != 1 and in_channels:
+            self.shortcut = nn.Conv2d(
+                in_channels,
+                out_channels,
+                kernel_size=(3, 3),
+                stride=stride,
+                padding=1
+            )
         else:
             self.shortcut = nn.Identity()
 
@@ -26,11 +38,11 @@ class ConvNext(nn.Module):
             nn.GroupNorm(in_channels // 8, in_channels),
             nn.SiLU(inplace=True),
             
-            nn.Conv2d(in_channels, expanded_channels, kernel_size=1, bias=False),
+            nn.Conv2d(in_channels, expanded_channels, kernel_size=(1, 1), bias=False),
             nn.GroupNorm(expanded_channels // 8, expanded_channels),
             nn.SiLU(inplace=True),
 
-            nn.Conv2d(expanded_channels, out_channels, kernel_size=1),
+            nn.Conv2d(expanded_channels, out_channels, kernel_size=(1, 1)),
             # nn.GroupNorm(in_channels // 8, in_channels),
             # nn.SiLU(inplace=True)
         )
