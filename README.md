@@ -96,9 +96,7 @@ MobileNet_v4/
 │   ├── FusedIB.py
 │   ├── IB.py
 │   ├── MobileMQA.py
-│   ├── ResNeXt.py
-│   ├── SE.py
-│   └── Stem.py
+│   └── Stem.y
 ├── unittests/
 │   ├── test_ConvNext.py
 │   ├── test_ExtraDW.py
@@ -111,8 +109,6 @@ MobileNet_v4/
 │   ├── test_MNv4_Hybrid_L.py
 │   ├── test_MNv4_Hybrid_M.py
 │   ├── test_MobileMQA.py
-│   ├── test_ResNeXt.py
-│   ├── test_SE.py
 │   └── test_Stem.py
 ├── __init__.py
 ├── README.de.md
