@@ -14,12 +14,12 @@ class FFN(nn.Module):
             self.shortcut = nn.Identity()
 
         self.ffn = nn.Sequential(
-            nn.Conv2d(in_channels, expanded_channels, kernel_size=1, bias=False),
+            nn.Conv2d(in_channels, expanded_channels, kernel_size=(1, 1), bias=False),
             
-            nn.GroupNorm(in_channels // 8, expanded_channels),
+            nn.GroupNorm(expanded_channels // 8, expanded_channels),
             nn.SiLU(inplace=True),
         
-            nn.Conv2d(expanded_channels, out_channels, kernel_size=1, bias=True),
+            nn.Conv2d(expanded_channels, out_channels, kernel_size=(1, 1), bias=True),
 
 
             # nn.GroupNorm(in_channels // 8, in_channels),
