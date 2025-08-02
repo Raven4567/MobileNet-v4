@@ -29,12 +29,11 @@ class TestMobileMultiQueryAttentionModule(unittest.TestCase):
         self.assertEqual(pred.dtype, t.float32)
 
     def test_forward_with_downsample(self):
-        self.model.__init__(
+        self.model = modules.MobileMQA(
             in_channels=16,
             num_heads=2,
             downsample=True
-        )
-        self.model.to(device)
+        ).to(device)
 
         pred = self.model(
             t.randn(1, 16, 14, 14, device=device)
