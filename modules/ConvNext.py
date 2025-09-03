@@ -11,24 +11,18 @@ class ConvNext(nn.Module):
             out_channels: int, 
             expanded_channels: int, 
             kernel_size: int | tuple[int, int], 
-            stride: int,
+            stride: int = 1,
             padding: int = 0
         ):
         super().__init__()
 
-        if in_channels != out_channels:
+        if in_channels != out_channels or stride > 1:
             self.shortcut = nn.Conv2d(
                 in_channels, 
-                out_channels, 
-                kernel_size=(1, 1)
-            )
-        elif stride != 1 and in_channels:
-            self.shortcut = nn.Conv2d(
-                in_channels,
                 out_channels,
-                kernel_size=(3, 3),
-                stride=stride,
-                padding=1
+                kernel_size = (1, 1),
+                stride = stride,
+                padding = 1
             )
         else:
             self.shortcut = nn.Identity()
@@ -42,9 +36,7 @@ class ConvNext(nn.Module):
             nn.GroupNorm(expanded_channels // 8, expanded_channels),
             nn.SiLU(inplace=True),
 
-            nn.Conv2d(expanded_channels, out_channels, kernel_size=(1, 1)),
-            # nn.GroupNorm(in_channels // 8, in_channels),
-            # nn.SiLU(inplace=True)
+            nn.Conv2d(expanded_channels, out_channels, kernel_size=(1, 1), bias=True),
         )
 
     def forward(self, x: t.Tensor):
