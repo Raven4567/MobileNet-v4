@@ -21,8 +21,7 @@ class ConvNext(nn.Module):
                 in_channels, 
                 out_channels,
                 kernel_size = (1, 1),
-                stride = stride,
-                padding = 1
+                stride = stride
             )
         else:
             self.shortcut = nn.Identity()
