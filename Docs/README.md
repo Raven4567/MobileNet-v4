@@ -1,6 +1,6 @@
 # MobileNet-v4 Implementation Documentation
 
-**Languages:** [English](Docs/README.md) | [Русский](Docs/README.ru.md) | [Deutsch](Docs/README.de.md) | [Español](Docs/README.es.md) | [中文](Docs/README.zh-CN.md)
+**Languages:** [English](README.md) | [Русский](README.ru.md) | [Deutsch](README.de.md) | [Español](README.es.md) | [中文](README.zh-CN.md)
 
 This is my repository with the implementation of the MobileNet-v4 architecture based on the original research paper.
 
