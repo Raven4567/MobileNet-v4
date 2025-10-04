@@ -15,8 +15,8 @@ class Stem(nn.Module):
 
         self.stem = nn.Sequential(
             nn.Conv2d(in_channels, out_channels, kernel_size, stride, padding, bias=False),
-            nn.GroupNorm(out_channels // 8, out_channels),
-            nn.SiLU(inplace=True)
+            nn.BatchNorm2d(out_channels),
+            nn.ReLU(inplace=True)
         )
     
     def forward(self, x: t.Tensor):

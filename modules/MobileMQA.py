@@ -17,22 +17,22 @@ class MobileMQA(nn.Module):
             self.downsample_key_conv = nn.Sequential(
                 # Depthwise conv for downsampling
                 nn.Conv2d(in_channels, in_channels, kernel_size=(3, 3), stride=2, padding=1, groups=in_channels, bias=False),
-                nn.GroupNorm(in_channels // 8, in_channels), # Assuming in_channels is divisible by 8
-                nn.SiLU(inplace=True),
+                nn.BatchNorm2d(in_channels),
+                nn.ReLU(inplace=True),
                 # Pointwise conv
                 nn.Conv2d(in_channels, in_channels, kernel_size=(1, 1), bias=False),
-                nn.GroupNorm(in_channels // 8, in_channels),
-                nn.SiLU(inplace=True)
+                nn.BatchNorm2d(in_channels),
+                nn.ReLU(inplace=True)
             )
             self.downsample_value_conv = nn.Sequential(
                 # Depthwise conv for downsampling
                 nn.Conv2d(in_channels, in_channels, kernel_size=(3, 3), stride=2, padding=1, groups=in_channels, bias=False),
-                nn.GroupNorm(in_channels // 8, in_channels),
-                nn.SiLU(inplace=True),
+                nn.BatchNorm2d(in_channels),
+                nn.ReLU(inplace=True),
                 # Pointwise conv
                 nn.Conv2d(in_channels, in_channels, kernel_size=(1, 1), bias=False),
-                nn.GroupNorm(in_channels // 8, in_channels),
-                nn.SiLU(inplace=True)
+                nn.BatchNorm2d(in_channels),
+                nn.ReLU(inplace=True)
             )
         else:
             self.downsample_key_conv = nn.Identity()

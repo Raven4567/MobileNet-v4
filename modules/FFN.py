@@ -16,14 +16,10 @@ class FFN(nn.Module):
         self.ffn = nn.Sequential(
             nn.Conv2d(in_channels, expanded_channels, kernel_size=(1, 1), bias=False),
             
-            nn.GroupNorm(expanded_channels // 8, expanded_channels),
-            nn.SiLU(inplace=True),
+            nn.BatchNorm2d(expanded_channels),
+            nn.ReLU(inplace=True),
         
             nn.Conv2d(expanded_channels, out_channels, kernel_size=(1, 1), bias=True),
-
-
-            # nn.GroupNorm(in_channels // 8, in_channels),
-            # nn.SiLU(inplace=True),
         )
 
     def forward(self, x: t.Tensor):
