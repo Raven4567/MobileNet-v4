@@ -43,14 +43,14 @@ class MNv4_Conv_S(nn.Module):
             ),
             nn.Sequential(
                 nn.Conv2d(128, 960, kernel_size=(1, 1), bias=False),
-                nn.GroupNorm(960 // 8, 960),
-                nn.SiLU(inplace=True),
+                nn.BatchNorm2d(960),
+                nn.ReLU(inplace=True),
                 
                 nn.AvgPool2d((7, 7)),
 
                 nn.Conv2d(960, 1280, kernel_size=(1, 1), bias=False),
-                nn.GroupNorm(1280 // 8, 1280),
-                nn.SiLU(inplace=True),
+                nn.BatchNorm2d(1280),
+                nn.ReLU(inplace=True),
 
                 # nn.Dropout(0.3),
 

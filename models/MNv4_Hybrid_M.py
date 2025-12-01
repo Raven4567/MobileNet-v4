@@ -59,14 +59,14 @@ class MNv4_Hybrid_M(nn.Module):
             ),
             nn.Sequential(
                 nn.Conv2d(256, 960, kernel_size=(1, 1), bias=False),
-                nn.GroupNorm(960 // 8, 960),
-                nn.SiLU(inplace=True),
+                nn.BatchNorm2d(960),
+                nn.ReLU(inplace=True),
 
                 nn.AvgPool2d((8, 8)),
 
                 nn.Conv2d(960, 1280, kernel_size=(1, 1), bias=False),
-                nn.GroupNorm(1280 // 8, 1280),
-                nn.SiLU(inplace=True),
+                nn.BatchNorm2d(1280),
+                nn.ReLU(inplace=True),
 
                 # nn.Dropout(0.2),
 

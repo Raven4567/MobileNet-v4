@@ -18,10 +18,10 @@ class TestMobileNet_v4_Conv_L(unittest.TestCase):
 
     def test_forward(self):
         pred = self.model(
-            t.randn(1, 3, 384, 384, device=device)
+            t.randn(4, 3, 384, 384, device=device)
         )
 
-        self.assertEqual(pred.shape, (1, 1000))
+        self.assertEqual(pred.shape, (4, 1000))
         self.assertEqual(pred.dtype, t.float32)
 
 if __name__ == '__main__':
