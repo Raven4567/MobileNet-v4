@@ -1,21 +1,21 @@
-# MobileNet-v4 Implementierungsdokumentation
+# Documentación de implementación de MobileNet-v4
 
-**Sprachen:** [English](README.md) | [Русский](README.ru.md) | [Deutsch](README.de.md) | [Español](README.es.md) | [中文](README.zh-CN.md)
+**Idiomas:** [English](README.md) | [Русский](README.ru.md) | [Deutsch](README.de.md) | [Español](README.es.md) | [中文](README.zh-CN.md)
 
-Dies ist mein Repository mit der Implementierung der MobileNet-v4-Architektur, basierend auf dem ursprünglichen Forschungspapier.
+Este es mi repositorio con la implementación de la arquitectura MobileNet-v4, basada en el artículo de investigación original.
 
-# Schnellstart
+# Inicio rápido
 
-## Installation
-Sie müssen ausführen:
-```
+## Instalación
+Debes ejecutar:
+```bash
 git clone https://github.com/Raven4567/MobileNet-v4
 
 cd MobileNet-v4
 pip install -r requirements.txt
 ```
 
-## Verwendung
+## Uso
 
 ### MobileNet-v4 small
 ```python
@@ -48,7 +48,7 @@ pred = model(t.randn(1, 3, 384, 384))
 ```
 
 ### MobileNet-v4 hybrid medium
-(*hybrid* - bedeutet die Verwendung eines Aufmerksamkeitsmechanismus)
+(*hybrid* - significa el uso de un mecanismo de atención)
 ```python
 import torch as t
 from MobileNet_v4 import MNv4_Hybrid_M
@@ -59,7 +59,7 @@ pred = model(t.randn(1, 3, 256, 256))
 ```
 
 ### MobileNet-v4 hybrid large
-(*hybrid* - bedeutet die Verwendung eines Aufmerksamkeitsmechanismus)
+(*hybrid* - significa el uso de un mecanismo de atención)
 ```python
 import torch as t
 from MobileNet_v4 import MNv4_Hybrid_L
@@ -69,7 +69,7 @@ model = MNv4_Hybrid_L()
 pred = model(t.randn(1, 3, 384, 384))
 ```
 
-## Auflösungen
+## Resoluciones
 
 - MNv4_Conv_S: `(224x224)`
 
@@ -81,7 +81,7 @@ pred = model(t.randn(1, 3, 384, 384))
 
 - MNv4_Hybrid_L: `(384x384)`
 
-## Anzahl der Parameter
+## Número de parámetros
 
 - MNv4_Conv_S: `3,705,064`
 
@@ -93,7 +93,7 @@ pred = model(t.randn(1, 3, 384, 384))
 
 - MNv4_Hybrid_L: `39,653,584`
 
-## Struktur | Projektübersicht
+## Estructura | Mapa del proyecto
 ```
 MobileNet_v4/
 ├── Docs/
@@ -135,5 +135,5 @@ MobileNet_v4/
 └── requirements.txt
 ```
 
-## Referenzen:
-- Das originale Forschungspapier von Google: https://arxiv.org/pdf/2404.10518
+## Referencias:
+- El artículo de investigación original de Google: https://arxiv.org/pdf/2404.10518
