@@ -87,11 +87,11 @@ pred = model(t.randn(1, 3, 384, 384))
 
 - MNv4_Conv_M: `10,087,064`
 
-- MNv4_Hybrid_M: `11,400,024`
+- MNv4_Hybrid_M: `11,652,952`
 
 - MNv4_Conv_L: `32,566,096`
 
-- MNv4_Hybrid_L: `39,653,584`
+- MNv4_Hybrid_L: `39,608,528`
 
 ## 结构 | 项目地图
 ```
